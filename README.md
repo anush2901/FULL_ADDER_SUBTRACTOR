@@ -37,19 +37,84 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+full adder
+
+![image](https://github.com/user-attachments/assets/6308e1a5-3207-42b9-8ce2-3d183b23eb66)
+
+full subtractor
+
+![image](https://github.com/user-attachments/assets/962da18a-6843-4c1c-8362-07b60d225550)
+
+
+
+
 
 **Procedure**
 
-Write the detailed procedure here
+Full Adder: Open Quartus II and create a new project. Use schematic design entry to
+draw the full adder circuit. The circuit consists of XOR, AND, and OR gates. Compile
+the design, verify its functionality through simulation. Implement the design on the
+target device and program it.
+Full Subtractor: Follow the same steps as for the full adder. Draw the full subtractor
+circuit using schematic design. The circuit includes XOR, AND, OR gates to perform
+subtraction. Compile, simulate, implement, and program the design similarly to the
+full adder
+
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+    //expt4a-full adder
+    module ex4a(sum, cout, a, b, cin);
+        output sum;
+        output cout;
+        input a;
+        input b;
+        input cin;
+        
+           wire w1,w2,w3;
+           assign w1=a^b;
+           assign w2=a&b;
+           assign w3=w1&cin;
+           assign sum=w1^cin;
+           assign cout=w2|w3;
+    endmodule
+    
+    //exp-4b-full subtractor
+    module ex4b(df, bo, a, b, bin);
+        output df;
+        output bo;
+        input a;
+        input b;
+        input bin;
+        
+           wire w1,w2,w3;
+           assign w1=a^b;
+           assign w2=(~a&b);
+           assign w3=(~w1&bin);
+           assign df=w1^bin;
+           assign bo=w2|w3;
+    endmodule
 
 **RTL Schematic**
+ full adder
+
+ ![image](https://github.com/user-attachments/assets/ba68e390-5bc8-4fbb-859d-04c5fdb3ba2b)
+
+full subtractor
+
+![image](https://github.com/user-attachments/assets/ef1eae52-2605-48ab-80ca-dc1ca3eac546)
+
 
 **Output Timing Waveform**
+ full adder
+
+![image](https://github.com/user-attachments/assets/951df368-b840-4731-86d3-7960dc04d5fe)
+
+full subtractor
+
+![image](https://github.com/user-attachments/assets/e2d299f9-6c56-4df1-8947-94bf7160f658)
+
+
 
 **Result:**
 
